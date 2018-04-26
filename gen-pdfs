@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for i in $(seq 1 7000)
+do
+    echo -e -n '\x25\x50\x44\x46\x2d\x31\x2e\x37\x0d\x0a\x25' >$i.pdf
+done
