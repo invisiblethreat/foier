@@ -19,7 +19,14 @@ first time at the [Atlantic Security Conference](https://atlseccon.com) on April
 * Build the project!
   * `go build`
 * Run the binary
-  *  `foier --help`
+  * `foier --help`
+
+
+## Demo Success!
+
+To give an idea of the performance of this project, I was able to download 7000
+files in under two seconds. The two hosts that I used were a $5 instance from
+Vultr and a $40 instance from Linode.
 
 ## Further Learning
 
@@ -28,4 +35,3 @@ first time at the [Atlantic Security Conference](https://atlseccon.com) on April
 * [Concurrency is not Parallelism, Rob Pike](https://talks.golang.org/2012/waza.slide#1)
 * [Visualizing Concurrency in Go, Ivan Daniluk](http://divan.github.io/posts/go_concurrency_visualize/)
 * [7 common mistakes in Go and when to avoid them, Steve Francia](https://www.youtube.com/watch?v=29LLRKIL_TI)
-
