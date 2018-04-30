@@ -77,7 +77,7 @@ func Scrape(config Config) {
 		// Not using a WaitGroup would spawn off all of your workers to begin
 		// execution, but not block and the function would retun almost
 		// instantly and most of your results would be orphaned.
-		go Worker(targets, &wg)
+		go worker(targets, &wg)
 	}
 
 	// This call blocks further execution while the Workers are active. Without
@@ -88,9 +88,9 @@ func Scrape(config Config) {
 	wg.Wait()
 }
 
-// Worker does all of the downloading. Notice that the WaitGroup is passed by
+// worker does all of the downloading. Notice that the WaitGroup is passed by
 // reference so all workers are reporting back to the same semaphore.
-func Worker(targets <-chan target, wg *sync.WaitGroup) {
+func worker(targets <-chan target, wg *sync.WaitGroup) {
 
 	// 'defer' is called after the function returns. 'Done()' decrements the
 	// semaphore by one, getting closer to the exit condition for 'Wait()'
