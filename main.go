@@ -42,12 +42,12 @@ func main() {
 	logrus.Infof("Logging level: %s", logrus.GetLevel().String())
 
 	// Convert the CLI arguments into a configuration that Foier can understand.
-	config := cli.mapToFoier()
+	scrape := cli.mapToFoier()
 
 	// We're all done with setup and now we're going to do the real work. All of
 	// the items here could have been hardcoded inside the 'Scrape' method if
 	// goal was the fewest lines of code possible.
-	foier.Scrape(config)
+	scrape.Run()
 }
 
 // mapToFoier transforms takes one type and returns another. This type of action
@@ -55,8 +55,8 @@ func main() {
 // values in the initial structure, you do not need to pass by reference.
 // Self-modification of a struct requires that you pass a reference or your
 // changes will not persist upon return.
-func (c CLIOptions) mapToFoier() foier.Config {
-	config := foier.Config{
+func (c CLIOptions) mapToFoier() foier.Scrape {
+	config := foier.Scrape{
 		URI:     c.URI,
 		Start:   c.Start,
 		End:     c.End,

@@ -20,10 +20,10 @@ import (
 // type can be structered the same as import, or they can be standalone
 // statments- this format is editor-friendly for code folding.
 type (
-	// Config sets the items needed for enumeration. Since 'Config' is
+	// Scrape sets the items needed for enumeration. Since 'Config' is
 	// capitalized, it can be accessed as a type outside of this package with
 	// by importing the package and referenceing 'foier.Config'
-	Config struct {
+	Scrape struct {
 		// The member attributes are also public and can be set external to the
 		// package
 		URI     string
@@ -46,8 +46,8 @@ type (
 	}
 )
 
-// Scrape farms out the work to all of the workers
-func Scrape(config Config) {
+// Run farms out the work to all of the workers
+func (s Scrape) Run() {
 
 	// initialize our channels
 	targets := make(chan (target))
@@ -55,7 +55,7 @@ func Scrape(config Config) {
 	// Generate all the targets in a goroutine. Pass the config through since we
 	// reuse so many values. We use a goroutine so we don't block the rest of
 	// execution.
-	go genTargets(targets, config)
+	go genTargets(targets, s)
 
 	// WaitGroup is key for not orphaning your results. In this case it is used
 	// as a semaphore to track the state of goroutines that are stil running.
@@ -65,7 +65,7 @@ func Scrape(config Config) {
 	var wg sync.WaitGroup
 
 	// Spawn our workers
-	for i := 0; i < config.Workers; i++ {
+	for i := 0; i < s.Workers; i++ {
 
 		// Add '1' to the WaitGroup, which is a blocking condition for the
 		// 'Wait()' method.
@@ -148,7 +148,7 @@ func worker(targets <-chan target, wg *sync.WaitGroup) {
 }
 
 // genTargets generates targets and sends them to a channel
-func genTargets(targets chan<- target, config Config) {
+func genTargets(targets chan<- target, config Scrape) {
 
 	// < is a less expensive operation than <=, we will add 1 to the condition.
 	// <= is potentially optimized by the compiler, but this explicitly does
