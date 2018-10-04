@@ -1,0 +1,8 @@
+github.com/sirupsen/logrus v1.0.5 h1:8c8b5uO0zS4X6RPl/sd1ENwSkIc0/H2PaHxE3udaE8I=
+github.com/sirupsen/logrus v1.0.5/go.mod h1:pMByvHTf9Beacp5x1UXfOR9xyW/9antXMhjMPG0dEzc=
+github.com/spf13/pflag v1.0.1 h1:aCvUg6QPl3ibpQUxyLkrEkCHtPqYJL4x9AuhqVqFis4=
+github.com/spf13/pflag v1.0.1/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnInEg4=
+golang.org/x/crypto v0.0.0-20180425071531-b0697eccbea9 h1:3KeP7KWmWXmkcCjNPMK5c6s3KgaWE5q589sggpeDPlc=
+golang.org/x/crypto v0.0.0-20180425071531-b0697eccbea9/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
+golang.org/x/sys v0.0.0-20180420145319-79b0c6888797 h1:ux9vYny+vlzqIcwoO6gRu+voPvKJA10ZceuJwWf2J88=
+golang.org/x/sys v0.0.0-20180420145319-79b0c6888797/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
